@@ -11,18 +11,14 @@ Blogpost.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     text: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    user_id: {
+    blogpost_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
+        model: 'blogpost',
         key: 'id',
       },
     },
@@ -32,8 +28,8 @@ Blogpost.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'blogpost',
+    modelName: 'comments',
   }
 );
 
-module.exports = Blogpost;
+module.exports = Comment;
