@@ -2,28 +2,50 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req,res) => {
-    try {
+router.post('/', withAuth, async (req, res) => {
+	try {
+		const newComment = await Comment.create({
+			...req.body,
+			userId: req.session.userId,
+		});
+		res.json(newComment);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
 
-    } catch (err) {
-        
-    }
-})
+router.delete('/:id', withAuth, async (req, res) => {
+	try {
+		const commentData = await Comment.destroy({
+			where: {
+				id: req.params.id,
+			},
+		});
 
-router.delete('/:id', withAuth, async (req,res) => {
-    try {
+		if (!commentData) {
+			res.status(404).json({ message: 'not correct id' });
+		}
+		res.status(200).json(commentData);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
 
-    } catch (err) {
-        
-    }
-})
+router.put('/:id', withAuth, async (req, res) => {
+	try {
+		const commentData = await Comment.update(req.body, {
+			where: {
+				id: req.params.id,
+			},
+		});
 
-router.put('/:id', withAuth, async (req,res) => {
-    try {
-
-    } catch (err) {
-        
-    }
-})
+		if (!commentData) {
+			res.status(404).json({ message: 'not correct id' });
+		}
+		res.status(200).json(commentData);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
 
 module.exports = router;
