@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Comment, Blogpost, User } = require('../models');
-const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
 	try {
@@ -9,7 +8,6 @@ router.get('/', async (req, res) => {
 			include: [
 				{
 					model: User,
-					attributes: ['name'],
 				},
 				{
 					model: Comment,
@@ -23,9 +21,7 @@ router.get('/', async (req, res) => {
 		);
 
 		// Pass serialized data and session flag into template
-		res.render('homepage', {
-			blogpost,
-		});
+		res.render('homepage', {blogpost});
 	} catch (err) {
 		res.status(500).json(err);
 	}
@@ -36,8 +32,7 @@ router.get('/blogpost/:id', async (req, res) => {
 		const blogpostData = await Blogpost.findByPk(req.params.id, {
 			include: [
 				{
-					model: User,
-					attributes: ['name'],
+					model: User
 				},
 				{
 					model: Comment,
@@ -47,7 +42,7 @@ router.get('/blogpost/:id', async (req, res) => {
 
 		const blogpost = blogpostData.get({ plain: true });
 
-		res.render('blogpost-single', {
+		res.render('blogpostsingle', {
 			blogpost,
 		});
 	} catch (err) {

@@ -12,7 +12,7 @@ router.get('/', withAuth, async (req, res) => {
 		const blogpost = blogpostData.map((blogpost) =>
 			blogpost.get({ plain: true })
 		);
-		res.render('self-blogpost', { blogpost });
+		res.render('blogpostself', { blogpost });
 	} catch (err) {
 		res.redirect('login');
 	}
@@ -21,3 +21,5 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/make', withAuth, async (req, res) => {
 	res.render('makepost');
 });
+
+module.exports = router;
