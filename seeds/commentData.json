@@ -1,0 +1,14 @@
+[
+	{
+		"text": "a comment",
+		"blogpost_id": 1
+	},
+	{
+		"text": "a second comment",
+		"blogpost_id": 1
+	},
+	{
+		"text": "a new comment",
+		"blogpost_id": 2
+	}
+]
