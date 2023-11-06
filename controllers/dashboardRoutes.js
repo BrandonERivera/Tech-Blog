@@ -12,7 +12,7 @@ router.get('/', withAuth, async (req, res) => {
 		const blogpost = blogpostData.map((blogpost) =>
 			blogpost.get({ plain: true })
 		);
-		res.render('blogpostself', { blogpost });
+		res.render('dashboard', { blogpost });
 	} catch (err) {
 		res.redirect('login');
 	}

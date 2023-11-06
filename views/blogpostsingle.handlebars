@@ -1,0 +1,16 @@
+<div>
+    <div>
+        Created by {{blogpost.user.name}}
+    </div>
+    <div>
+        {{blogpost.text}}
+    </div>
+    {{#if blogpost.Comment}}
+    {{#each blogpost.Comment}}
+    <div>
+        <h3>{{user.name}}</h3>
+        <p>{{body}}</p>
+    </div>
+    {{/each}}
+    {{/if}}
+</div>
