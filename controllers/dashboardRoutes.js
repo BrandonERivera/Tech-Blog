@@ -6,20 +6,20 @@ router.get('/', withAuth, async (req, res) => {
 	try {
 		const blogpostData = await Blogpost.findAll({
 			where: {
-				userid: req.session.userid,
+				user_id: req.session.user_id,
 			},
 		});
 		const blogpost = blogpostData.map((blogpost) =>
 			blogpost.get({ plain: true })
 		);
-		res.render('dashboard', { blogpost, layout:"dashboard" });
+		res.render('dashboard', { blogpost, layout:"dashboardlayout" });
 	} catch (err) {
 		res.redirect('login');
 	}
 });
 
 router.get('/make', withAuth, async (req, res) => {
-	res.render('makepost', {layout:"dashboard"});
+	res.render('makepost', {layout:"dashboardlayout"});
 });
 
 module.exports = router;
