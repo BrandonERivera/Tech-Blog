@@ -12,14 +12,14 @@ router.get('/', withAuth, async (req, res) => {
 		const blogpost = blogpostData.map((blogpost) =>
 			blogpost.get({ plain: true })
 		);
-		res.render('dashboard', { blogpost });
+		res.render('dashboard', { blogpost, layout:"dashboard" });
 	} catch (err) {
 		res.redirect('login');
 	}
 });
 
 router.get('/make', withAuth, async (req, res) => {
-	res.render('makepost');
+	res.render('makepost', {layout:"dashboard"});
 });
 
 module.exports = router;

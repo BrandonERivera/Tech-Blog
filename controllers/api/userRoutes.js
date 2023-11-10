@@ -23,7 +23,6 @@ router.post('/login', async (req, res) => {
 				email: req.body.email,
 			},
 		});
-
 		if (!userData) {
 			res
 				.status(400)
