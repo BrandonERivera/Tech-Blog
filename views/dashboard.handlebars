@@ -1,6 +1,5 @@
 <div class=''>
-	{{#if blogposts.length}}
-		{{#each blogpost}}
+{{#each blogpost}}
 		<div class=''>
 			<div class=''>
 				<h2>
@@ -12,9 +11,6 @@
 			</div>
 		</div>
 	{{/each}}
-
-	{{else}}
-
-	{{/if}}
-
-<script src="/js/dashboard.js"></script>
+	<div>
+		<a href="/dashboard/make">Make your own post!</a>
+	</div>
