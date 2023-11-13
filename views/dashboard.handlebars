@@ -1,16 +1,15 @@
-<div class=''>
+<div>
 {{#each blogpost}}
-		<div class=''>
-			<div class=''>
-				<h2>
-					<a href='/blogpost/{{id}}'>{{title}}</a>
-				</h2>
-				<div class=''>
-					{{text}}
-				</div>
+	<div>
+		<div>
+			<h2><a href='/dashboard/change/{{id}}'>{{title}}</a></h2>
+			<div>
+				{{text}}
 			</div>
 		</div>
-	{{/each}}
+	</div>
+{{/each}}
 	<div>
 		<a href="/dashboard/make">Make your own post!</a>
 	</div>
+</div>

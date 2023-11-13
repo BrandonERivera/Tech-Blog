@@ -22,4 +22,19 @@ router.get('/make', withAuth, async (req, res) => {
 	res.render('makepost', {layout:"dashboardlayout"});
 });
 
+router.get('/change/:id', withAuth, async (req, res) => {
+	try {
+		const blogpostData = await Blogpost.findByPk(req.params.id);
+	
+		  const blogpost = blogpostData.get({ plain: true });
+	
+		  res.render('change', { blogpost,
+			layout: 'dashboardlayout',
+		  });
+
+	  } catch (err) {
+		res.status(500).json(err)
+	  }
+});
+
 module.exports = router;
