@@ -1,6 +1,6 @@
 <div>
     <div>
-        Created by {{blogpost.user.name}}
+        Created by {{blogpost.user.name}} on {{ blogpost.createdAt}}
     </div>
     <div>
         {{blogpost.text}}
@@ -12,6 +12,7 @@
     </div>
     {{/each}}
     {{/if}}
+
     <div>
         <h2> add a comment</h2>
         <form class="form comment-form" data-id="{{blogpost.id}}">
