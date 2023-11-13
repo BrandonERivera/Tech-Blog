@@ -1,17 +1,15 @@
-<div class=''>
+<div class='d-flex flex-row justify-content-evenly mt-3 flex-wrap'>
 	{{#each blogpost}}
-		<div class=''>
-			<div class=''>
-				<h2>
-					<a href='/blogpost/{{id}}'>{{title}}</a>
+		<div class='card text-white bg-success mb-3 '>
+				<h2 class="d-flex card-header card-title justify-content-center">
+					<a class=" nav-link text-dark" href='/blogpost/{{id}}'>{{title}}</a>
 				</h2>
-				<div class=''>
+				<div class='d-flex justify-content-center card-body'>
+					<div class="card-text">
 					{{text}}
-				</div>
-				<div>
 					created by {{user.name}} on {{createdAt}}
+					</div>
 				</div>
-			</div>
 		</div>
 	{{/each}}
 </div>
